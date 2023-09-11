@@ -9,11 +9,11 @@ const fillDB = async() => {
             const {data} = await countriesApi.get();
             const countries = data.map(country => {
                 return {
-                    id: country.alpha3Code,
-                    name: country.name,
-                    flag: country.flag, 
-                    continent: country.region,
-                    capital: country.capital,
+                    id: country.cca3,
+                    name: country.name.common,
+                    flag: country.flags.svg, 
+                    continent: country.continents[0],
+                    capital: country.capital[0],
                     subregion: country.subregion,
                     area: country.area,
                     population: country.population
