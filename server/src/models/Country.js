@@ -41,7 +41,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     area: {
-      type: DataTypes.DECIMAL(10, 1),
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     population: {
       type: DataTypes.INTEGER,
