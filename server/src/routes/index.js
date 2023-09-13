@@ -1,27 +1,22 @@
 const { Router } = require("express");
+const getCountries = require("../handlers/getCountries");
+const getCountryById = require("../handlers/getCountryById");
+const getCountryByName = require("../handlers/getCountryByName");
+const createActivity = require("../handlers/createActivity");
+const getActivities = require("../handlers/getActivities");
 
 const router = Router();
 
 
-server.get('/countries', (req, res) => {
-    res.send('getCountries')
-})
+router.get('/countries', getCountries);
+
+router.get('/countries/name', getCountryByName);
+
+router.get('/countries/:id', getCountryById);  
   
-server.get('/countries/:id', (req, res) => {
-    res.send('getCountryById')
-})
+router.post('/actvities', createActivity);
   
-server.get('/countries/name', (req, res) => {
-    res.send('getCountryByName')
-})
-  
-server.post('/actvities', (req, res) => {
-    res.send('createActivity')
-})
-  
-server.get('/actvities', (req, res) => {
-    res.send('getActivities')
-})
+router.get('/actvities', getActivities);
   
 
 module.exports = router;
