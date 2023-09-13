@@ -16,7 +16,7 @@ const addActivityInDB = async({ name, difficulty, duration, season, countries })
     const activity = await Activity.create({
         name,
         difficulty,
-        duration,
+        duration: duration ? duration : null,
         season
     });
 
