@@ -5,7 +5,9 @@ const getInDB = async(id = -1) => {
 
     if (typeof id === 'string') {
         const country = await Country.findOne({
-            where: { id },
+            where: { 
+                id: id.toUpperCase() 
+            },
             include: {
                 model: Activity,
                 attributes: ['name', 'difficulty', 'duration', 'season']

@@ -5,13 +5,15 @@
 
 const { Activity, Country } = require('../db.js');
 
-const addActivityInDB = async({ name, difficulty, duration, season, countries }) => {
+const addActivityInDB = async( name, difficulty, duration, season, countries ) => {
 
-    if(!name || !difficulty || !duration || !season || !countries) throw new Error('Faltan datos');
+    if(!name || !difficulty || !season || !countries) throw new Error('Faltan datos');
+    
+    const countriesInDB = await Country.findByPk(countries);
 
-    const countriesInDB = await Country.finByPk(countries);
+    console.log(countriesInDB);
 
-    if(!countriesInDB.length) throw new Error('No se encontraron los paises');
+    if(!countriesInDB) throw new Error('No se encontraron los paises');
 
     const activity = await Activity.create({
         name,
