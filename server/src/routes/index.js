@@ -4,6 +4,7 @@ const getCountryById = require("../handlers/getCountryById");
 const getCountryByName = require("../handlers/getCountryByName");
 const createActivity = require("../handlers/createActivity");
 const getActivities = require("../handlers/getActivities");
+const deleteActivity = require("../handlers/deleteActivity");
 
 const router = Router();
 
@@ -14,9 +15,11 @@ router.get('/countries/name', getCountryByName);
 
 router.get('/countries/:id', getCountryById);  
   
-router.post('/actvities', createActivity);
+router.post('/activities', createActivity);
   
-router.get('/actvities', getActivities);
+router.get('/activities', getActivities);
+
+router.delete('/activities/:id', deleteActivity);
   
 
 module.exports = router;
