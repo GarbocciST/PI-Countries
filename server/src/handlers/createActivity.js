@@ -3,7 +3,7 @@ const addActivityInDB = require('../controllers/addInDB.js');
 
 const createActivity = async (req, res) => {
     const { name, difficulty, duration, season, countries } = req.body;
-    console.log(name, difficulty, duration, season, countries);
+    // console.log(name, difficulty, duration, season, countries);
 
     try {
         const activity = await addActivityInDB(name, difficulty, duration, season, countries);
