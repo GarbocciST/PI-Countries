@@ -7,7 +7,7 @@ const createActivity = async (req, res) => {
 
     try {
         const activity = await addActivityInDB(name, difficulty, duration, season, countries);
-        res.status(200).json(activity);
+        res.status(201).json(activity);
 
     } catch (error) {
         res.status(500).json({ error: error.message })
