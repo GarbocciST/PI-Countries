@@ -11,6 +11,9 @@ const getInDB = async(id = -1) => {
             include: {
                 model: Activity,
                 attributes: ['id', 'name', 'difficulty', 'duration', 'season']
+            },
+            through: {
+                attributes: []
             }
         })
         
@@ -22,6 +25,9 @@ const getInDB = async(id = -1) => {
             include: {
                 model: Activity,
                 attributes: ['id', 'name', 'difficulty', 'duration', 'season']
+            },
+            through: {
+                attributes: []
             }
         });
 
@@ -37,7 +43,10 @@ const getInDBByName = async(name) => {
         },
         include: {
             model: Activity,
-            attributes: ['name', 'difficulty', 'duration', 'season']
+            attributes: ['id', 'name', 'difficulty', 'duration', 'season']
+        },
+        through: {
+            attributes: []
         }
     });
 
@@ -49,11 +58,16 @@ const getActivitiesInDB = async() => {
     const activities = await Activity.findAll({
         include: {
             model: Country,
-            attributes: ['name']
-        }
+            attributes: ['id'],
+            through: {
+                attributes: []
+            }
+        },
+        // raw: true
     });
 
     if (!activities.length) throw new Error(`No se pudo encontrar ninguna actividad en la base de datos`);
+
     return activities;
 }
 
