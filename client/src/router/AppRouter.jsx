@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { DetailPage, FormPage, HomePage, LandingPage } from '../pages'
 
 
 export const AppRouter = () => {
