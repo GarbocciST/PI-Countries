@@ -1,5 +1,5 @@
-import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, 
-    FILTER_COUNTRIES, ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_LOADING
+import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, SET_LOADING,
+    FILTER_COUNTRIES, ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, CLEAR_STATE
 } from './actions/action_types';
 
 
@@ -22,6 +22,12 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 countries: payload,
                 allCountries: payload,
+                isLoading: false,
+            }
+        case SEARCH_COUNTRY:
+            return {
+                ...state,
+                countries: payload,
                 isLoading: false,
             }
         case GET_ACTIVITY:
@@ -70,6 +76,15 @@ const reducer = (state = initialState, { type, payload }) => {
                 allCountries: [...sortedCountries],
                 isLoading: false,
             }
+        case CLEAR_STATE:
+            return {
+                ...state,
+                countries: [],
+                allCountries: [],
+                isLoading: false,
+            }
+        default:
+            return {...state}
     }
 
 

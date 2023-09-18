@@ -7,3 +7,4 @@ export const ORDER_COUNTRIES = 'ORDER_COUNTRIES';
 export const SEARCH_COUNTRY = 'SEARCH_COUNTRY';
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const SET_LOADING = 'SET_LOADING';
+export const CLEAR_STATE = 'CLEAR_STATE';
