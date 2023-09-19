@@ -1,6 +1,6 @@
 import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, 
     FILTER_COUNTRIES, ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_LOADING 
-} from './actions/action_types';
+} from './action_types';
 import { countriesApi } from '../../api/countriesAPI';
 
 
