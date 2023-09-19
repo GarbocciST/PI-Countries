@@ -5,6 +5,7 @@ import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, SET_LOADING
 
 const initialState = {
     activities: [],
+    country: [],
     countries: [],
     allCountries: [],
     isLoading: false,
@@ -27,7 +28,7 @@ const reducer = (state = initialState, { type, payload }) => {
         case SEARCH_COUNTRY:
             return {
                 ...state,
-                countries: payload,
+                country: payload,
                 isLoading: false,
             }
         case GET_ACTIVITY:
