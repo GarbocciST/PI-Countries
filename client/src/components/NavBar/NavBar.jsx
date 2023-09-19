@@ -5,9 +5,6 @@ export const NavBar = () => {
   return (
     <>
       <SearchBar />
-      <button>{"<"}</button>
-      <p>pagina: </p>
-      <button>{">"}</button>
     </>
   )
 }

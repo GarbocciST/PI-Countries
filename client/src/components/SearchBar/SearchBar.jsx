@@ -5,6 +5,7 @@ export const SearchBar = () => {
 
     const country = useSelector(state => state.country);
     const dispatch = useDispatch();
+    
 
     const handleSubmit = (e) => {
         e.preventDefault()
