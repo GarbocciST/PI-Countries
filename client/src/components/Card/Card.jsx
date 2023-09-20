@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 export const Card = ({id, name, flag, continent, capital, subregion, area, population}) => {
   return (
@@ -11,6 +12,11 @@ export const Card = ({id, name, flag, continent, capital, subregion, area, popul
             <h5>{area}</h5>
             <h6>{population}</h6>
         </div>
+        <Link
+            to={`/detail/${id}`}
+        >
+            <button>Ver detalle</button>
+        </Link>
     </>
   )
 }

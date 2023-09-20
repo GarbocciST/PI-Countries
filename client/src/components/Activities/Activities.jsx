@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getActivities } from "../../redux/actions";
 
 
-export const FormPage = () => {
+export const Activities = () => {
   const { activities, isLoading } = useSelector(state => state);
   const dispatch = useDispatch();
 
@@ -13,7 +13,7 @@ export const FormPage = () => {
 
   return (
     <div>
-      <button onClick={handleClick}>Agregar nueva actividad</button>
+      <button onClick={''}>Agregar nueva actividad</button>
       {isLoading && <h1>Loading...</h1>}
 
         {activities.map(activity => (

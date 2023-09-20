@@ -1,6 +1,6 @@
 
 
-export const Form = () => {
+export const Form = ({setOpenModal}) => {
   return (
     <div>Form</div>
   )
