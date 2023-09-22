@@ -18,6 +18,7 @@ export const getCountries = () => {
             }, 1000);
         } catch (error) {
             console.log(error.message);
+            alert('Error getting countries')
         }
     }
 }
@@ -34,6 +35,7 @@ export const searchCountry = (payload) => {
             })
         } catch (error) {
             console.log(error.message);
+            alert('Error searching country')
         }
     }
 }
@@ -61,6 +63,7 @@ export const getActivities = () => {
             }, 1000);
         } catch (error) {
             console.log(error.message);
+            alert('Error getting activities')
         }
     }
 }
@@ -70,13 +73,17 @@ export const addActivity = (payload) => {
         try {
             dispatch({ type: SET_LOADING })
 
-            const { data } = await countriesApi.post('/activity', payload);
-            dispatch({
-                type: ADD_ACTIVITY,
-                payload: data
-            })
+            setTimeout(async () => {
+                const { data } = await countriesApi.post('/activities', payload);
+                dispatch({
+                    type: ADD_ACTIVITY,
+                    payload: data
+                })
+            }, 1000);
+            alert('Activity created successfully')
         } catch (error) {
             console.log(error.message);
+            alert('Error creating activity')
         }
     }
 }
@@ -86,13 +93,15 @@ export const updateActivity = (payload) => {
         try {
             dispatch({ type: SET_LOADING })
 
-            const { data } = await countriesApi.put(`/activity/${payload.id}`, payload);
+            const { data } = await countriesApi.put(`/activities/${payload.id}`, payload);
             dispatch({
                 type: UPDATE_ACTIVITY,
                 payload: data
             })
+            alert('Activity updated successfully')
         } catch (error) {
             console.log(error.message);
+            alert('Error updating activity')
         }
     }
 }
@@ -102,13 +111,15 @@ export const deleteActivity = (payload) => {
         try {
             dispatch({ type: SET_LOADING })
 
-            await countriesApi.delete(`/activity/${payload}`);
+            await countriesApi.delete(`/activities/${payload}`);
             dispatch({
                 type: DELETE_ACTIVITY,
                 payload
             })
+            alert('Activity deleted successfully')
         } catch (error) {
             console.log(error.message);
+            alert('Error deleting activity')
         }
     }
 }
