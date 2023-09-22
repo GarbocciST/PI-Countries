@@ -1,5 +1,7 @@
 const { Country, Activity} = require('../db.js');
 const { Op } = require('sequelize');
+const { mapCountryData } = require('../helpers/countriesMap.js');
+const { mapActivityData } = require('../helpers/activityMap.js');
 
 const getInDB = async(id = -1) => {
 
@@ -10,7 +12,7 @@ const getInDB = async(id = -1) => {
             },
             include: {
                 model: Activity,
-                attributes: ['id', 'name', 'difficulty', 'duration', 'season']
+                attributes: ['name']
             },
             through: {
                 attributes: []
@@ -18,13 +20,15 @@ const getInDB = async(id = -1) => {
         })
         
         if (!country) throw new Error(`No se pudo encontrar el pais con el id ${id}`);
-        return country;
+        const countryMap = mapCountryData(country);
+
+        return countryMap;
         
     } else {
         const country = await Country.findAll({
             include: {
                 model: Activity,
-                attributes: ['id', 'name', 'difficulty', 'duration', 'season']
+                attributes: ['name']
             },
             through: {
                 attributes: []
@@ -32,7 +36,9 @@ const getInDB = async(id = -1) => {
         });
 
         if (!country.length) throw new Error(`No se pudo encontrar ningun pais en la base de datos`);
-        return country;
+        const countryMap = mapCountryData(country);
+
+        return countryMap;
     }
 }
 
@@ -43,7 +49,7 @@ const getInDBByName = async(name) => {
         },
         include: {
             model: Activity,
-            attributes: ['id', 'name', 'difficulty', 'duration', 'season']
+            attributes: ['name']
         },
         through: {
             attributes: []
@@ -51,24 +57,28 @@ const getInDBByName = async(name) => {
     });
 
     if (!country.length) throw new Error(`No se pudo encontrar el pais con el nombre ${name}`);
-    return country;
+
+    const countryMap = mapCountryData(country);
+
+    return countryMap;
 }
 
 const getActivitiesInDB = async() => {
     const activities = await Activity.findAll({
         include: {
             model: Country,
-            attributes: ['id'],
+            attributes: ['name'],
             through: {
                 attributes: []
             }
         },
-        // raw: true
     });
 
     if (!activities.length) throw new Error(`No se pudo encontrar ninguna actividad en la base de datos`);
 
-    return activities;
+    const activitiesMap = mapActivityData(activities);
+
+    return activitiesMap;
 }
 
 
