@@ -134,7 +134,9 @@ export const Form = ({setShowForm}) => {
               <option value="" disabled>
                 Select a country:
               </option>
-              {allCountries.map((country) => (
+              {allCountries
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((country) => (
                 <option key={country.id} value={country.id}>
                   {country.name}
                 </option>
@@ -149,7 +151,7 @@ export const Form = ({setShowForm}) => {
         activity.season &&
         activity.countries.length > 0 &&
         Object.keys(errors).length === 0 ? (
-          <button className={style.formButton}>
+          <button className={style.formButton} disabled={isLoading}>
             {isLoading ? 'Creating Activity...' : 'CREATE ACTIVITY'}
             CREATE ACTIVITY
             </button>
