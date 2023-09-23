@@ -59,7 +59,8 @@ const reducer = (state = initialState, { type, payload }) => {
                 isLoading: false,
             }
         case FILTER_COUNTRIES_BY_ACTIVITY:
-            const filteredByActivity = state.allCountries.filter(country => country.activity && country.activity.length > 0);            return {
+            const filteredByActivity = state.allCountries.filter(country => country.activities.length > 0);            
+            return {
                 ...state,
                 countries: [...filteredByActivity],
             }

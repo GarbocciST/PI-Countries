@@ -32,7 +32,7 @@ export const HomePage = () => {
     if(e.target.value === 'North America' || e.target.value === 'South America' || e.target.value === 'Europe' || e.target.value === 'Africa' || e.target.value === 'Asia' || e.target.value === 'Oceania' || e.target.value === 'Antarctica') {
       dispatch(filterCountriesByContinent(e.target.value));
     }
-    if(e.target.value === 'activ') {
+    if(e.target.value === 'activity') {
       dispatch(filterCountriesByActivity(e.target.value));
     }
   }
@@ -57,7 +57,7 @@ export const HomePage = () => {
         onChange={handleFilter}
       >
         <option value="all">All</option>
-        <option value="activ">Activity</option>
+        <option value="activity">Activity</option>
         <option value="North America"> North America</option>
         <option value="South America"> South America</option>
         <option value="Europe"> Europe</option>
