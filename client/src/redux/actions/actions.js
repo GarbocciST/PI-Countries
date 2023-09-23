@@ -1,5 +1,6 @@
 import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, 
-    FILTER_COUNTRIES, ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_SELECTED_COUNTRIES, SET_LOADING 
+    ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_SELECTED_COUNTRIES, SET_LOADING, 
+    ORDER_COUNTRIES_BY_POPULATION, FILTER_COUNTRIES_BY_ACTIVITY, FILTER_COUNTRIES_BY_CONTINENT
 } from './action_types';
 import { countriesApi } from '../../api/countriesAPI';
 
@@ -124,14 +125,38 @@ export const deleteActivity = (payload) => {
     }
 }
 
-export const filter = (payload) => {
-    return async (dispatch) => {
-
+export const orderCountries = (payload) => {
+    return (dispatch) => {
+        dispatch({
+            type: ORDER_COUNTRIES,
+            payload
+        })
     }
 }
 
-export const order = (payload) => {
-    return async (dispatch) => {
+export const orderCountriesByPopulation = (payload) => {
+    return (dispatch) => {
+        dispatch({
+            type: ORDER_COUNTRIES_BY_POPULATION,
+            payload
+        })
+    }
+}
 
+export const filterCountriesByContinent = (payload) => {
+    return (dispatch) => {
+        dispatch({
+            type: FILTER_COUNTRIES_BY_CONTINENT,
+            payload
+        })
+    }
+}
+
+export const filterCountriesByActivity = (payload) => {
+    return (dispatch) => {
+        dispatch({
+            type: FILTER_COUNTRIES_BY_ACTIVITY,
+            payload
+        })
     }
 }

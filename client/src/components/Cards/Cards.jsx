@@ -7,7 +7,7 @@ import { Card } from '../Card/Card';
 export const Cards = () => {
 
     // const allCountries = useSelector(state => state.allCountries);
-    const { allCountries, isLoading, country } = useSelector(state => state);
+    const { allCountries, isLoading, country, countries } = useSelector(state => state);
     const dispatch = useDispatch();
 
     const [currentPage, setCurrentPage] = useState(0);
@@ -15,13 +15,13 @@ export const Cards = () => {
   
     const startIndex = currentPage * itemsPerPage;
   
-    const currentCountries = allCountries.slice(
+    const currentCountries = countries.slice(
       startIndex,
       startIndex + itemsPerPage
     );
   
     const nextPage = () => {
-      if (startIndex + itemsPerPage < allCountries.length) {
+      if (startIndex + itemsPerPage < countries.length) {
         setCurrentPage(currentPage + 1);
       }
     };
@@ -39,6 +39,9 @@ export const Cards = () => {
 
   return (
     <>
+          <button onClick={prevPage} disabled={currentPage === 0}>{"<"}</button>
+          <p>pagina: {currentPage + 1}</p>
+          <button onClick={nextPage}disabled={startIndex + itemsPerPage >= countries.length}>{">"}</button>
         {
             isLoading ? <h1>Loading...</h1> :
             currentCountries.map(({id, name, flag, continent, capital, subregion, area, population}) => {
@@ -57,9 +60,6 @@ export const Cards = () => {
                 )
             })      
         }
-        <button onClick={prevPage} disabled={currentPage === 0}>{"<"}</button>
-        <p>pagina: {currentPage + 1}</p>
-        <button onClick={nextPage}disabled={startIndex + itemsPerPage >= allCountries.length}>{">"}</button>
     
     
     </>

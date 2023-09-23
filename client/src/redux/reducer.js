@@ -1,5 +1,6 @@
-import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, SET_LOADING,
-    FILTER_COUNTRIES, ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_SELECTED_COUNTRIES, CLEAR_STATE
+import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, 
+    ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_SELECTED_COUNTRIES, SET_LOADING, 
+    ORDER_COUNTRIES_BY_POPULATION, FILTER_COUNTRIES_BY_ACTIVITY, FILTER_COUNTRIES_BY_CONTINENT, CLEAR_STATE
 } from './actions/action_types';
 
 
@@ -24,6 +25,7 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 countries: payload,
                 allCountries: payload,
+                // selectedCountries: payload,
                 isLoading: false,
             }
         case SEARCH_COUNTRY:
@@ -32,11 +34,6 @@ const reducer = (state = initialState, { type, payload }) => {
                 country: payload,
                 isLoading: false,
             }
-        case SET_SELECTED_COUNTRIES:
-            return {
-                ...state,
-                selectedCountries: action.payload,
-            };
         case GET_ACTIVITY:
             return {
                 ...state,
@@ -61,15 +58,19 @@ const reducer = (state = initialState, { type, payload }) => {
                 activities: state.activities.filter(activity => activity.id !== payload),
                 isLoading: false,
             }
-        case FILTER_COUNTRIES:
-            const filteredCountries = state.allCountries.filter(country => country.region === payload || country.activities.some(activity => activity.name === payload));
+        case FILTER_COUNTRIES_BY_ACTIVITY:
+            const filteredByActivity = state.allCountries.filter(country => country.activity && country.activity.length > 0);            return {
+                ...state,
+                countries: [...filteredByActivity],
+            }
+        case FILTER_COUNTRIES_BY_CONTINENT:
+            const filteredByContinent = state.allCountries.filter(country => country.continent === payload);
             return {
                 ...state,
-                allCountries: [...filteredCountries],
-                isLoading: false,
+                countries: payload === 'all' ? state.allCountries : [...filteredByContinent],
             }
         case ORDER_COUNTRIES:
-            const sortedCountries = state.countries.sort((a, b) => {
+            const sortedCountries = [...state.countries].sort((a, b) => {
                 if (a.name > b.name) {
                     return payload === 'asc' ? 1 : -1;
                 }
@@ -80,8 +81,21 @@ const reducer = (state = initialState, { type, payload }) => {
             })
             return {
                 ...state,
-                allCountries: [...sortedCountries],
-                isLoading: false,
+                countries: payload === 'all' ? state.allCountries : [...sortedCountries],
+            }
+        case ORDER_COUNTRIES_BY_POPULATION:
+            const sortedByPopulation = [...state.countries].sort((a, b) => {
+                if (a.population > b.population) {
+                    return payload === 'asc' ? 1 : -1;
+                }
+                if (a.population < b.population) {
+                    return payload === 'asc' ? -1 : 1;
+                }
+                return 0;
+            })
+            return {
+                ...state,
+                countries: [...sortedByPopulation],
             }
         case CLEAR_STATE:
             return {
