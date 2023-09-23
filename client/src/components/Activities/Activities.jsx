@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getActivities } from "../../redux/actions";
+import style from "./Activities.module.css";
 
 
 export const Activities = () => {
@@ -11,11 +12,10 @@ export const Activities = () => {
     dispatch(getActivities());
   }, []);
 
+  if (isLoading) return <h1>Loading...</h1>;
+
   return (
     <div>
-      <button onClick={''}>Agregar nueva actividad</button>
-      {isLoading && <h1>Loading...</h1>}
-
         {activities.map(activity => (
           <div className="card" key={activity.id}>
             <div className="card-body">
