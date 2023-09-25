@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Activities, Cards, NavBar } from "../../components"
 // import { NavBar } from "../../components/NavBar/NavBar"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterCountriesByActivity, filterCountriesByContinent, 
   orderCountries, orderCountriesByPopulation 
 } from "../../redux/actions";
 
 export const HomePage = () => {
-  const [ view, setView ] = useState('Countries');
+  // const [ view, setView ] = useState('Countries');
+  const { view } = useSelector(state => state);
   const dispatch = useDispatch();
 
   const handleOrder = (e) => {
@@ -41,7 +42,6 @@ export const HomePage = () => {
 
   return (
     <>
-      <NavBar />
       {/* <button onClick={() => setView('Countries')}>Con</button>
       <button onClick={() => setView('Activities')}>Actividades</button> */}
       <select 
@@ -66,7 +66,8 @@ export const HomePage = () => {
         <option value="Oceania"> Oceania</option>
         <option value="Antarctica"> Antarctica</option>
       </select>
-      {view === 'Countries' ? <Cards /> : <Activities />}
+      
+      <Cards/>
     </>
   )
 }

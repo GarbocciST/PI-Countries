@@ -2,16 +2,17 @@ import {useState ,useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCountries } from '../../redux/actions';
 import { Card } from '../Card/Card';
+import { Searched } from '../Searched/Searched';
 
 
 export const Cards = () => {
 
     // const allCountries = useSelector(state => state.allCountries);
-    const { allCountries, isLoading, country, countries } = useSelector(state => state);
+    const { isLoading, country, countries, view } = useSelector(state => state);
     const dispatch = useDispatch();
 
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 12;
+    const itemsPerPage = 10;
   
     const startIndex = currentPage * itemsPerPage;
   
@@ -44,6 +45,7 @@ export const Cards = () => {
           <button onClick={nextPage}disabled={startIndex + itemsPerPage >= countries.length}>{">"}</button>
         {
             isLoading ? <h1>Loading...</h1> :
+            view === 'Countries' ?
             currentCountries.map(({id, name, flag, continent, capital, subregion, area, population}) => {
                 return (
                     <Card 
@@ -58,7 +60,10 @@ export const Cards = () => {
                         population={population}
                     />
                 )
-            })      
+            })  
+            :
+            <Searched />
+   
         }
     
     

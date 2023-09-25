@@ -1,15 +1,15 @@
-import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, 
-    ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_SELECTED_COUNTRIES, SET_LOADING, 
+import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, SET_VIEW,
+    ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_LOADING, 
     ORDER_COUNTRIES_BY_POPULATION, FILTER_COUNTRIES_BY_ACTIVITY, FILTER_COUNTRIES_BY_CONTINENT, CLEAR_STATE
 } from './actions/action_types';
 
 
 const initialState = {
     activities: [],
-    country: [],
+    countrySearched: [],
     countries: [],
     allCountries: [],
-    selectedCountries:[],
+    view: 'Countries',
     isLoading: false,
 }
 
@@ -31,7 +31,7 @@ const reducer = (state = initialState, { type, payload }) => {
         case SEARCH_COUNTRY:
             return {
                 ...state,
-                country: payload,
+                countrySearched: payload,
                 isLoading: false,
             }
         case GET_ACTIVITY:
@@ -97,6 +97,12 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 countries: [...sortedByPopulation],
+            }
+        case SET_VIEW:
+            return {
+                ...state,
+                view: payload,
+                // isLoading: false,                
             }
         case CLEAR_STATE:
             return {

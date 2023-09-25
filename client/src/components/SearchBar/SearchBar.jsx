@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { searchCountry } from '../../redux/actions';
+import { searchCountry, setView } from '../../redux/actions';
 
 export const SearchBar = () => {
 
+    const { view } = useSelector(state => state);
     const country = useSelector(state => state.country);
     const dispatch = useDispatch();
     
@@ -10,6 +11,7 @@ export const SearchBar = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(searchCountry(e.target[0].value));
+        dispatch(setView('Searched'));
     }
 
   return (

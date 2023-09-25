@@ -1,5 +1,5 @@
-import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, 
-    ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_SELECTED_COUNTRIES, SET_LOADING, 
+import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, SET_VIEW,
+    ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_LOADING, 
     ORDER_COUNTRIES_BY_POPULATION, FILTER_COUNTRIES_BY_ACTIVITY, FILTER_COUNTRIES_BY_CONTINENT
 } from './action_types';
 import { countriesApi } from '../../api/countriesAPI';
@@ -29,7 +29,8 @@ export const searchCountry = (payload) => {
         try {
             dispatch({ type: SET_LOADING })
 
-            const { data } = await countriesApi.get(`/countries?name=${payload}`);
+            const { data } = await countriesApi.get(`/countries/name?name=${payload}`);
+            console.log(data)
             dispatch({
                 type: SEARCH_COUNTRY,
                 payload: data
@@ -38,15 +39,6 @@ export const searchCountry = (payload) => {
             console.log(error.message);
             alert('Error searching country')
         }
-    }
-}
-
-export const setSelectedCountries =(payload)=>{
-    return async (dispatch) => {
-            dispatch({
-                type: SET_SELECTED_COUNTRIES,
-                payload
-            })
     }
 }
 
@@ -156,6 +148,20 @@ export const filterCountriesByActivity = (payload) => {
     return (dispatch) => {
         dispatch({
             type: FILTER_COUNTRIES_BY_ACTIVITY,
+            payload
+        })
+    }
+}
+
+export const setView = (payload) => {
+    return (dispatch) => {
+
+        // setTimeout(() => {
+        //     dispatch({ type: SET_LOADING })
+        // }, 1000);
+
+        dispatch({
+            type: SET_VIEW,
             payload
         })
     }
