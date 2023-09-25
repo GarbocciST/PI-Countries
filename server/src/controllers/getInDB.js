@@ -20,9 +20,20 @@ const getInDB = async(id = -1) => {
         })
         
         if (!country) throw new Error(`No se pudo encontrar el pais con el id ${id}`);
-        const countryMap = mapCountryData(country);
+        
+        const countryMapped = {
+            id: country.id,
+            name: country.name,
+            flag: country.flag,
+            continent: country.continent,
+            capital: country.capital,
+            subregion: country.subregion,
+            area: country.area,
+            population: country.population,
+            activities: country.Activities.map(activity => activity.name)
+        };
 
-        return countryMap;
+        return countryMapped;
         
     } else {
         const country = await Country.findAll({
