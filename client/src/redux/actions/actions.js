@@ -29,12 +29,13 @@ export const searchCountry = (payload) => {
         try {
             dispatch({ type: SET_LOADING })
 
-            const { data } = await countriesApi.get(`/countries/name?name=${payload}`);
-            console.log(data)
-            dispatch({
-                type: SEARCH_COUNTRY,
-                payload: data
-            })
+            setTimeout(async () => {
+                const { data } = await countriesApi.get(`/countries/name?name=${payload}`);
+                dispatch({
+                    type: SEARCH_COUNTRY,
+                    payload: data
+                })
+            }, 1000);
         } catch (error) {
             console.log(error.message);
             alert('Error searching country')
