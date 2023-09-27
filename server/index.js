@@ -5,7 +5,7 @@ const { PORT } = process.env;
 const fillDB = require('./src/utils/utils.js');
 
 conn.sync({ alter: true }).then(() => {
-server.listen(PORT,async() => {
+server.listen(PORT, "0.0.0.0", async() => {
   console.log(`Server listening on port ${PORT}`);
   await fillDB();
 })
