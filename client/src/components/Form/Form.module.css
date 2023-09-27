@@ -95,10 +95,9 @@
   }
   
   .formError {
-    color: white;
+    color: red;
     font-size: 0.8rem;
     margin-top: 0.5rem;
-    background-color: red;
     text-align: center;
     border-radius: 10px;
   }

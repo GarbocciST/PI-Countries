@@ -91,7 +91,7 @@ export const Form = ({setShowForm}) => {
       </div>
 
       <div className={style.formField}>
-        <label>Duration: (min)</label>
+        <label>Duration: (hours)</label>
         <input
           type="number"
           name="duration"

@@ -18,8 +18,8 @@ const validations = (activity) => {
     errors.difficulty = "The difficulty range can only be from 1 to 5";
   }
 
-  if (activity.duration > 24) {
-    errors.duration = "The duration can't be more than 24 hours";
+  if (activity.duration < 1 || activity.duration > 24) {
+    errors.duration = "The duration must be between 1 and 24 hours";
   }
 
   if (!activity.season) {

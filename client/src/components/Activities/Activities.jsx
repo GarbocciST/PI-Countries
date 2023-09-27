@@ -27,7 +27,7 @@ export const Activities = () => {
           <div className={style.cardBody}>
             <h5 className={style.cardTitle}>{activity.name}</h5>
             <p className={style.cardText}>Difficulty: {activity.difficulty}</p>
-            <p className={style.cardText}>Duration: {activity.duration} min</p>
+            <p className={style.cardText}>Duration: {activity.duration} hours</p>
             <p className={style.cardText}>Season: {activity.season}</p>
           </div>
         </div>
