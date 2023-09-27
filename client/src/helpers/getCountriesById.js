@@ -1,4 +1,4 @@
-import { countriesApi } from "../api/countriesAPI";
+import { countriesApi } from "../api/countriesApi";
 
 export const getCountriesById = async (id) => {
     try {
