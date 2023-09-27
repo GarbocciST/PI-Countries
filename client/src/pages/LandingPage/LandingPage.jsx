@@ -5,7 +5,7 @@ import style from './LandingPage.module.css';
 export const LandingPage = () => {
   return (
     <div className={style.landingContainer}>
-      <img className={style.landingImage} src="/public/countries.png" alt="Countries" />
+      <img className={style.landingImage} src="/countries.png" alt="Countries" />
 
       <div className={style.buttonContainer}>
         <Link to="/home">
