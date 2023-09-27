@@ -14,7 +14,6 @@ export const NavBar = () => {
   const handleView = () => {
     dispatch(setView('Countries'));
     dispatch(clearCountrySearched());
-    console.log('render')
   };
 
   return (

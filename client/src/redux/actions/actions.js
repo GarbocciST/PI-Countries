@@ -27,21 +27,26 @@ export const getCountries = () => {
 export const searchCountry = (payload) => {
     return async (dispatch) => {
         try {
-            dispatch({ type: SET_LOADING })
+            dispatch({ type: SET_LOADING });
 
             setTimeout(async () => {
                 const { data } = await countriesApi.get(`/countries/name?name=${payload}`);
                 dispatch({
                     type: SEARCH_COUNTRY,
                     payload: data
-                })
-            }, 1000);
+                });
+            }, 1000).catch((error) => {
+                throw new Error(error.message);
+            });
         } catch (error) {
-            console.log(error.message);
-            alert('Error searching country')
+            dispatch({
+                type: SEARCH_COUNTRY,
+                payload: [{ name: 'No country found' }]
+            });
         }
-    }
-}
+    };
+};
+
 
 export const getActivities = () => {
     return async (dispatch) => {
