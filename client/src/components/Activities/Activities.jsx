@@ -21,9 +21,9 @@ export const Activities = () => {
 
   return (
     <div className={style.activityGrid}>
-      {activities.map(activity => (
+      { activities?.map(activity => (
         <div className={style.card} key={activity.id}>
-          <div className={style.deleteButton} onClick={() => handleDelete(activity.id)}>X</div>
+          { activity.id && <div className={style.deleteButton} onClick={() => handleDelete(activity.id)}>X</div>}
           <div className={style.cardBody}>
             <h5 className={style.cardTitle}>{activity.name}</h5>
             <p className={style.cardText}>Difficulty: {activity.difficulty}</p>

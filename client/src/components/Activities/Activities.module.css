@@ -1,8 +1,8 @@
-/* Activities.module.css */
 .activityGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    display: flex;
+    justify-content: center;
+    height: 245px;
+    width: 248px;
     margin-top: 1em;
 }
   

@@ -10,13 +10,13 @@ export const getCountries = () => {
         try {
             dispatch({ type: SET_LOADING })
 
-            setTimeout(async () => {
+            
                 const { data } = await countriesApi.get('/countries');
                 dispatch({
                     type: GET_COUNTRIES,
                     payload: data
                 })
-            }, 1000);
+           
         } catch (error) {
             console.log(error.message);
             alert('Error getting countries')
@@ -29,15 +29,13 @@ export const searchCountry = (payload) => {
         try {
             dispatch({ type: SET_LOADING });
 
-            setTimeout(async () => {
+            
                 const { data } = await countriesApi.get(`/countries/name?name=${payload}`);
                 dispatch({
                     type: SEARCH_COUNTRY,
                     payload: data
                 });
-            }, 1000).catch((error) => {
-                throw new Error(error.message);
-            });
+
         } catch (error) {
             dispatch({
                 type: SEARCH_COUNTRY,
@@ -53,16 +51,18 @@ export const getActivities = () => {
         try {
             dispatch({ type: SET_LOADING })
             
-            setTimeout(async () => {
+            
                 const { data } = await countriesApi.get('/activities');
                 dispatch({
                     type: GET_ACTIVITY,
                     payload: data
                 })
-            }, 1000);
         } catch (error) {
             console.log(error.message);
-            alert('Error getting activities')
+            dispatch({
+                type: GET_ACTIVITY,
+                payload: [{ name: 'No activity found' }]
+            });
         }
     }
 }
@@ -72,13 +72,12 @@ export const addActivity = (payload) => {
         try {
             dispatch({ type: SET_LOADING })
 
-            setTimeout(async () => {
+            
                 const { data } = await countriesApi.post('/activities', payload);
                 dispatch({
                     type: ADD_ACTIVITY,
                     payload: data
                 })
-            }, 1000);
             alert('Activity created successfully')
         } catch (error) {
             console.log(error.message);
@@ -162,8 +161,7 @@ export const filterCountriesByActivity = (payload) => {
 export const setView = (payload) => {
     return (dispatch) => {
 
-        // setTimeout(() => {
-        //     dispatch({ type: SET_LOADING })
+        //    //     dispatch({ type: SET_LOADING })
         // }, 1000);
 
         dispatch({
