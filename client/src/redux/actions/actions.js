@@ -2,7 +2,7 @@ import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, SET_VIEW,
     ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_LOADING, CLEAR_COUNTRIES_SEARCHED,
     ORDER_COUNTRIES_BY_POPULATION, FILTER_COUNTRIES_BY_ACTIVITY, FILTER_COUNTRIES_BY_CONTINENT
 } from './action_types';
-import { countriesApi } from '../../api/countriesAPI';
+import { countriesApi } from '../../api/countriesApi';
 
 
 export const getCountries = () => {
