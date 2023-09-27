@@ -8,7 +8,7 @@
     "api": "echo 'Local API listening on PORT 5000' & json-server --watch api/db.json -p 5000 -q",
     "start": "concurrently \"npm run server\" \"npm run api\"",
     "dev": "node index.js",
-    "build": "webpack --config webpack.dev.js"  
+    "build": "echo 'Building project' && rm -rf dist && tsc"    
 
   },
   "author": "",
