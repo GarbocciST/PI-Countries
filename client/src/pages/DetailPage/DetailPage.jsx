@@ -19,7 +19,6 @@ export const DetailPage = () => {
 
   return (
     <>
-      {/* <h1>Detail Page</h1> */}
       <div className={style.card}>
         <img src={countryDetail.flag} alt={countryDetail.name} />
         <div className={style.cardBody}>
@@ -28,9 +27,16 @@ export const DetailPage = () => {
           <p className={style.cardText}>Capital: {countryDetail.capital}</p>
           <p className={style.cardText}>Continet: {countryDetail.continent}</p>
           { countryDetail.subregion && <p className={style.cardText}>Subregion: {countryDetail.subregion}</p>}
-          { countryDetail.area && <span className={style.cardText}>Area: {countryDetail.area}</span>}
+          { countryDetail.area && <span className={style.cardText}>Area: {countryDetail.area} km²</span>}
           <span className={style.cardText}>Population: {countryDetail.population}</span>
-          <p className={style.cardText}>Activities: {countryDetail.activities}</p>
+          <p className={style.cardText}>Activities: </p> 
+          <div className={style["grid-container"]}>
+          {countryDetail.activities?.map((activity, index) => (
+            <span key={index} className={style.activity}>
+              {activity}
+            </span>
+            ))}
+          </div>
         </div>
       </div>
     </>

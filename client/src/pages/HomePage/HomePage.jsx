@@ -55,9 +55,9 @@ export const HomePage = () => {
           className={style.selectStyle}
         >
           <option value="all">All</option>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
-          <option value="pop">Poblacion</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+          <option value="pop">Population</option>
         </select>
 
         <select

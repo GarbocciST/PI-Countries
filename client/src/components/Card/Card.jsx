@@ -5,20 +5,17 @@ import style from './Card.module.css';
 export const Card = ({ id, name, flag, continent, capital, subregion, area, population, activities }) => {
   return (
     <div className={style.card}>
-      <div>
+      <div className={style.containerImg}>
         <img src={flag} alt={name} />
-        <Link to={`/detail/${id}`}>
-          <span className={style["detail-button"]}>Ver detalle</span>
-        </Link>
       </div>
+        <Link to={`/detail/${id}`}>
+          <span className={style["detail-button"]}>View Detail</span>
+        </Link>
 
       <div className={style["button-container"]}>
         <h1>{name}</h1>
         <h2>Continent: {continent}</h2>
         <h3>Capital: {capital}</h3>
-        <h4>Subregion: {subregion}</h4>
-        <h5>Area: {area} km²</h5>
-        <h6>Population: {population}</h6>
       </div>
 
       {activities?.length > 0 && (

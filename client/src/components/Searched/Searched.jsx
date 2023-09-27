@@ -22,23 +22,29 @@ export const Searched = () => {
           </div>
         </div>
         
-        <div className={style.gridContainer}>
-          {currentCountries.map(({ id, name, flag, continent, capital, subregion, area, population, activities }) => {
-            return (
-              <Card 
-                key={id}
-                id={id}
-                name={name}
-                flag={flag}
-                continent={continent}
-                capital={capital}
-                subregion={subregion}
-                area={area}
-                population={population}
-                activities={activities}
-              />
-            );
-          })}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <div className={style.gridContainer}>
+            {currentCountries.map(({ id, name, flag, continent, capital, subregion, area, population, activities }) => {
+              return (
+                <Card 
+                  key={id}
+                  id={id}
+                  name={name}
+                  flag={flag}
+                  continent={continent}
+                  capital={capital}
+                  subregion={subregion}
+                  area={area}
+                  population={population}
+                  activities={activities}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     );
