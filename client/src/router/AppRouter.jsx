@@ -1,12 +1,17 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { DetailPage, FormPage, HomePage, LandingPage } from '../pages'
 import { NavBar } from '../components'
 
 
 export const AppRouter = () => {
+
+  const {pathname} = useLocation();
+
   return (
     <>
-      <NavBar />
+      {
+        (pathname !== '/') && <NavBar />
+      }
       
       <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -18,7 +23,7 @@ export const AppRouter = () => {
           <Route path='/form' element={<FormPage />} />
 
           <Route path='/*' element={<Navigate to='/' />} />
-    </Routes>
+      </Routes>
     </>
   )
 }

@@ -1,0 +1,25 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .selectStyle {
+    min-width: 200px;
+    margin: 8px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  .selectStyle:hover {
+    border-color: #aaa;
+  }
+  
+  .selectStyle:focus {
+    border-color: #007bff;
+  }
+  

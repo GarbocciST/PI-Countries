@@ -1,0 +1,42 @@
+/* Activities.module.css */
+.activityGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 1em;
+}
+  
+.card {
+    background-color: #f6e676;
+    border: 1px solid #e0e0e0;
+    box-shadow: 3px 3px 4px rgba(0, 0.8, 0, 0.7);
+    border-radius: 4px;
+    padding: 16px;
+    position: relative; 
+}
+  
+.cardTitle {
+    font-size: 1.5rem;
+    margin-top: 16px;
+}
+  
+.cardText {
+    margin-top: 8px;
+}
+  
+.deleteButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: red;
+    border: none;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 21px;
+    font-weight: bold;
+}
+  

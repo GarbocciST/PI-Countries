@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { getCountriesById } from "../../helpers/getCountriesById";
+import style from './DetailPage.module.css';
 
 
 export const DetailPage = () => {  
@@ -18,17 +19,18 @@ export const DetailPage = () => {
 
   return (
     <>
-      <h1>Detail Page</h1>
-      <div className="card">
+      {/* <h1>Detail Page</h1> */}
+      <div className={style.card}>
         <img src={countryDetail.flag} alt={countryDetail.name} />
-        <div className="card-body">
-          <h5 className="card-title">{countryDetail.name}</h5>
-          <p className="card-text">ID: {countryDetail.id}</p>
-          <p className="card-text">Capital: {countryDetail.capital}</p>
-          <p className="card-text">Continente: {countryDetail.region}</p>
-          { countryDetail.subregion && <p className="card-text">Subregión: {countryDetail.subregion}</p>}
-          { countryDetail.area && <p className="card-text">Área: {countryDetail.area}</p>}
-          <p className="card-text">Población: {countryDetail.population}</p>
+        <div className={style.cardBody}>
+          <h5 className={style.cardTitle}>{countryDetail.name}</h5>
+          <p className={style.cardText}>ID: {countryDetail.id}</p>
+          <p className={style.cardText}>Capital: {countryDetail.capital}</p>
+          <p className={style.cardText}>Continet: {countryDetail.continent}</p>
+          { countryDetail.subregion && <p className={style.cardText}>Subregion: {countryDetail.subregion}</p>}
+          { countryDetail.area && <span className={style.cardText}>Area: {countryDetail.area}</span>}
+          <span className={style.cardText}>Population: {countryDetail.population}</span>
+          <p className={style.cardText}>Activities: {countryDetail.activities}</p>
         </div>
       </div>
     </>

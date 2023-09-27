@@ -5,6 +5,7 @@ import { Card } from '../Card/Card';
 import { Searched } from '../Searched/Searched';
 import { usePaginate } from '../../hooks';
 import { Countries } from '../Countries/Countries';
+import { Loading } from '../Loading/Loading';
 
 
 export const Cards = () => {
@@ -20,7 +21,7 @@ export const Cards = () => {
   return (
     <>
       {
-        (isLoading) ? <h1>Loading...</h1> :
+        (isLoading) ? <Loading /> :
         (view === 'Countries') ? <Countries /> : <Searched /> 
       }
     </>

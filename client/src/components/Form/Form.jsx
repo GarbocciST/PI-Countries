@@ -63,7 +63,7 @@ export const Form = ({setShowForm}) => {
 
   return (
     <form onSubmit={handleSubmit} className={style.formContainer}> 
-    <button onClick={() => setShowForm(false)}>X</button>
+    <div className={style.closeBtn} onClick={() => setShowForm(false)}>X</div>
     <div className={style.formContent}>
       <div className={style.formField}>
         <label>Name: </label>
@@ -91,7 +91,7 @@ export const Form = ({setShowForm}) => {
       </div>
 
       <div className={style.formField}>
-        <label>Duration: </label>
+        <label>Duration: (min)</label>
         <input
           type="number"
           name="duration"
