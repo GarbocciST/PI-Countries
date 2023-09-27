@@ -1,5 +1,5 @@
 import {ADD_ACTIVITY,GET_ACTIVITY, DELETE_ACTIVITY, UPDATE_ACTIVITY, SET_VIEW,
-    ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_LOADING, 
+    ORDER_COUNTRIES, SEARCH_COUNTRY, GET_COUNTRIES, SET_LOADING, CLEAR_COUNTRIES_SEARCHED,
     ORDER_COUNTRIES_BY_POPULATION, FILTER_COUNTRIES_BY_ACTIVITY, FILTER_COUNTRIES_BY_CONTINENT, CLEAR_STATE
 } from './actions/action_types';
 
@@ -110,6 +110,11 @@ const reducer = (state = initialState, { type, payload }) => {
                 countries: [],
                 allCountries: [],
                 isLoading: false,
+            }
+        case CLEAR_COUNTRIES_SEARCHED:
+            return {
+                ...state,
+                countrySearched: [],
             }
         default:
             return {...state}
